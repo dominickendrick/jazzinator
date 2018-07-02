@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+
+body {
+	overflow:scroll;
+}
+ol li {
+ display:inline;
+ list-style:none;
+}
+
+.piano {
+	width:1640px;
+}
+.pianoKey {
+	width:30px;
+	height:200px;
+	padding:0;
+	padding-top:150px;
+}
+
+.pianoKey.sharp {
+	position:absolute;
+	background-color: black;
+	color:white;
+	height:130px;
+	padding-top: 100px;
+	width:20px;
+	margin-left:-10px;
+	font-size:0.5rem;
+}
+
+
+
+</style>
+</head>
 
 <body>
+    <div class="piano"></div>
     <script src="https://cdn.rawgit.com/mohayonao/web-audio-api-shim/master/build/web-audio-api-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
     <script src="piano.js"></script>
+
 </body>
 
 </html>
