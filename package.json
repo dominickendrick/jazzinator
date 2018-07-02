@@ -4,6 +4,7 @@
   "description": "Browser based jazz piano",
   "main": "piano.js",
   "dependencies": {
+    "lite-server": "^2.4.0",
     "npm": "^6.1.0"
   },
   "devDependencies": {},
