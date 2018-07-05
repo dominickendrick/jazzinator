@@ -123,7 +123,8 @@ function renderPianoUi(container, notes) {
         button.addEventListener('mousedown', () => { 
             key.control()
                 .then(buffer => {
-                    button.addEventListener('mouseup', () => { buffer.stop() })
+                    button.addEventListener('mouseup', () => { //buffer.stop() 
+                    })
                     buffer.start()
                })
         })
@@ -146,3 +147,5 @@ function renderPianoUi(container, notes) {
 
 
 renderPianoUi(document.querySelector('.piano'), pianoNotes)
+
+export { getSampleSource };

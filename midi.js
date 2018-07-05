@@ -1,6 +1,4 @@
-// Variable which tell us what step of the game we're on. 
-// We'll use this later when we parse noteOn/Off messages
-var currentStep = 0;
+import { getSampleSource } from "./piano.js";
 
 // Request MIDI access
 if (navigator.requestMIDIAccess) {
@@ -57,6 +55,9 @@ function noteOn(note) {
     const key = getKeyFromMidiId(note)
     const keyElement = document.getElementsByClassName(key)[0]
     keyElement.classList.add('pressed')
+    getSampleSource('Grand Piano', key).then(buffer => {
+        buffer.start()
+    });
 }
 
 // Function to handle noteOff messages (ie. key is released)
