@@ -143,4 +143,6 @@ function renderPianoUi(container, notes) {
     container.appendChild(keysWrapper)
 }
 
+
+
 renderPianoUi(document.querySelector('.piano'), pianoNotes)
