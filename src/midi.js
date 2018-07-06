@@ -1,13 +1,15 @@
-import { getSampleSource } from "./piano.js";
+import { getSampleSource, OCTAVE } from "./piano.js";
 
-// Request MIDI access
-if (navigator.requestMIDIAccess) {
-    console.log('This browser supports WebMIDI!');
+function initMidi() {
+    // Request MIDI access
+    if (navigator.requestMIDIAccess) {
+        console.log('This browser supports WebMIDI!');
 
-    navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+        navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
 
-} else {
-    console.log('WebMIDI is not supported in this browser.');
+    } else {
+        console.log('WebMIDI is not supported in this browser.');
+    }
 }
 
 // Function to run when requestMIDIAccess is successful
@@ -69,8 +71,6 @@ function noteOff(note) {
 }
 
 function getKeyFromId(id) {
-
-    const OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     //get the note value as one of the keys from 1-88
     const absoluteId = id - 24;
     const octave = Math.floor(absoluteId / 12) + 1
@@ -91,3 +91,5 @@ function getKeyFromMidiId(id) {
             return null;
     }
 }
+
+export { initMidi };

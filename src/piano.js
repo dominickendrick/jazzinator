@@ -2,6 +2,10 @@ const OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 
 const PIANO_OCTAVES = [1, 2, 3, 4, 5, 6, 7]
 
+const PIANO_NOTES = PIANO_OCTAVES.reduce((accumulator, currentValue) => {
+    return accumulator.concat(getNotesForOctave(currentValue))
+}, []);
+
 const SAMPLE_LIBRARY = {
     'Grand Piano': [
         { note: 'A', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-a4.wav' },
@@ -89,10 +93,6 @@ function getSampleSource(instrument, note) {
         });
 }
 
-const pianoNotes = PIANO_OCTAVES.reduce((accumulator, currentValue) => {
-    return accumulator.concat(getNotesForOctave(currentValue))
-}, []);
-
 function getNotesForOctave(octave) {
     return OCTAVE.map(note => {
         let instrument = 'Grand Piano'
@@ -153,4 +153,4 @@ function renderPianoUi(container, notes) {
 //TODO: add compatable scales
 //TODO: remap keys to fit scales and chord shapes
 
-export { getSampleSource, renderPianoUi, pianoNotes, OCTAVE };
+export { getSampleSource, renderPianoUi, PIANO_NOTES, OCTAVE };

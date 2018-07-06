@@ -1,5 +1,6 @@
-import { renderPianoUi, pianoNotes } from './piano.js';
-import './midi.js';
+import { renderPianoUi, PIANO_NOTES } from './piano.js';
+import { initMidi } from './midi.js';
 
-console.log("woot ?");
-renderPianoUi(document.querySelector('.piano'), pianoNotes);
+initMidi();
+
+renderPianoUi(document.querySelector('.piano'), PIANO_NOTES);
