@@ -4,16 +4,22 @@
   "description": "Browser based jazz piano",
   "private": "true",
   "dependencies": {
-    "npm": "^6.1.0"
+    "npm": "^6.1.0",
+    "webpack": "^4.15.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.75.0",
     "lite-server": "^2.4.0",
-    "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   },
   "scripts": {
     "dev": "lite-server",
-    "build": "webpack"
+    "build": "webpack",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",

@@ -1,12 +1,34 @@
+// @flow
+
+type Note = {
+    instrument: string,
+    noteString: string,
+    note: string,
+    octave: number,
+    control: () => ?Promise<AudioBufferSourceNode>,
+    sharp: boolean
+}
+
+type Sample = {
+    audioBuffer: AudioBuffer,
+    distance: number
+}
+
+type SampleAsset = {
+    note: string,
+    octave: number,
+    file: string
+}
+
 const OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
-const PIANO_OCTAVES = [1, 2, 3, 4, 5, 6, 7]
+const PIANO_OCTAVES: Array<number> = [1, 2, 3, 4, 5, 6, 7]
 
-const PIANO_NOTES = PIANO_OCTAVES.reduce((accumulator, currentValue) => {
-    return accumulator.concat(getNotesForOctave(currentValue))
+const PIANO_NOTES: Array<Note> = PIANO_OCTAVES.reduce((arr, currentValue) => {
+    return arr.concat(getNotesForOctave(currentValue))
 }, []);
 
-const SAMPLE_LIBRARY = {
+const SAMPLE_LIBRARY: { [string]: Array<SampleAsset> } = {
     'Grand Piano': [
         { note: 'A', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-a4.wav' },
         { note: 'A', octave: 5, file: '/assets/audio/samples/grand_piano/piano-f-a5.wav' },
@@ -23,7 +45,7 @@ const SAMPLE_LIBRARY = {
     ]
 };
 
-function flatToSharp(note) {
+function flatToSharp(note: string): string {
     switch (note) {
         case 'Bb':
             return 'A#';
@@ -40,29 +62,39 @@ function flatToSharp(note) {
     }
 }
 
-function getSample(instrument, noteAndOctave) {
-    let [, requestedNote, requestedOctave] = /^(\w[b\#]?)(\d)$/.exec(noteAndOctave);
-    requestedOctave = parseInt(requestedOctave, 10);
-    requestedNote = flatToSharp(requestedNote);
-    let sampleBank = SAMPLE_LIBRARY[instrument];
-    let sample = getNearestSample(sampleBank, requestedNote, requestedOctave);
-    let distance =
-        getNoteDistance(requestedNote, requestedOctave, sample.note, sample.octave);
-    return fetchSample(sample.file).then(audioBuffer => ({
-        audioBuffer: audioBuffer,
-        distance: distance
-    }));
+function getSample(instrument:string , noteAndOctave: string): ?Promise<Sample> {
+    const match: ?Array<string> = /^(\w[b\#]?)(\d)$/.exec(noteAndOctave);
+
+    if (match && match[1] && match[2]) {
+        const requestedNote = match[1]
+        const requestedOctave = match[2]
+
+        const octave = parseInt(requestedOctave, 10);
+        const note = flatToSharp(requestedNote);
+
+        const sampleBank: Array<SampleAsset> = SAMPLE_LIBRARY[instrument];
+
+        const sample: SampleAsset = getNearestSample(sampleBank, note, octave);
+        const distance =
+            getNoteDistance(note, octave, sample.note, sample.octave);
+
+        return fetchSample(sample.file).then(audioBuffer => ({
+            audioBuffer: audioBuffer,
+            distance: distance
+        }));
+    }
+
 }
 
-function noteValue(note, octave) {
+function noteValue(note: string , octave: number): number {
     return octave * 12 + OCTAVE.indexOf(note);
 }
 
-function getNoteDistance(note1, octave1, note2, octave2) {
+function getNoteDistance(note1: string, octave1: number, note2: string, octave2: number): number {
     return noteValue(note1, octave1) - noteValue(note2, octave2);
 }
 
-function getNearestSample(sampleBank, note, octave) {
+function getNearestSample(sampleBank: Array<SampleAsset>, note: string, octave: number): SampleAsset {
     let sortedBank = sampleBank.slice().sort((sampleA, sampleB) => {
         let distanceToA =
             Math.abs(getNoteDistance(note, octave, sampleA.note, sampleA.octave));
@@ -75,15 +107,17 @@ function getNearestSample(sampleBank, note, octave) {
 
 let audioContext = new AudioContext();
 
-function fetchSample(path) {
+function fetchSample(path: string): Promise<AudioBuffer> {
     return fetch(encodeURIComponent(path))
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer));
 }
 
-function getSampleSource(instrument, note) {
-    return getSample(instrument, note)
-        .then(({ audioBuffer, distance }) => {
+function getSampleSource(instrument: string, note: string): ?Promise<AudioBufferSourceNode> {
+    const sample: ?Promise<Sample> = getSample(instrument, note)
+
+    if (sample) {
+        sample.then(({ audioBuffer, distance }) => {
             let playbackRate = Math.pow(2, distance / 12);
             let bufferSource = audioContext.createBufferSource();
             bufferSource.buffer = audioBuffer;
@@ -91,15 +125,16 @@ function getSampleSource(instrument, note) {
             bufferSource.connect(audioContext.destination);
             return bufferSource
         });
+    }
 }
 
-function getNotesForOctave(octave) {
+function getNotesForOctave(octave: number): Array<Note> {
     return OCTAVE.map(note => {
-        let instrument = 'Grand Piano'
+        const instrument = 'Grand Piano'
             // The note and octave as a string ie 'C4'
-        let noteString = note + octave
+        const noteString = note + octave
 
-        let key = {
+        const key = {
             instrument,
             noteString,
             note,
@@ -112,21 +147,23 @@ function getNotesForOctave(octave) {
     });
 }
 
-function renderPianoUi(container, notes) {
-    let keysWrapper = document.createElement('ol')
+function renderPianoUi(container: ?Element , notes: Array<Note>): void {
+    const keysWrapper = document.createElement('ol')
 
     notes.forEach(key => {
-        let list = document.createElement('li')
-        let button = document.createElement('button')
-        let listElement = keysWrapper.appendChild(list)
+        const list = document.createElement('li')
+        const button = document.createElement('button')
+        const listElement = keysWrapper.appendChild(list)
 
         button.addEventListener('mousedown', () => { 
-            key.control()
-                .then(buffer => {
+            const sample = key.control();
+            if (sample) {
+                sample.then(buffer => {
                     button.addEventListener('mouseup', () => { //buffer.stop() 
                     })
                     buffer.start()
                })
+            }
         })
 
         button.textContent = key.noteString
@@ -140,8 +177,9 @@ function renderPianoUi(container, notes) {
         listElement.appendChild(button)
     })
 
-
-    container.appendChild(keysWrapper)
+    if (container != null) {
+        container.appendChild(keysWrapper)
+    }
 }
 
 
