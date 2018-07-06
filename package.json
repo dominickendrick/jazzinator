@@ -2,15 +2,18 @@
   "name": "jazzinator",
   "version": "1.0.0",
   "description": "Browser based jazz piano",
-  "main": "piano.js",
+  "private": "true",
   "dependencies": {
     "npm": "^6.1.0"
   },
   "devDependencies": {
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.4.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   },
   "scripts": {
-    "dev": "lite-server"
+    "dev": "lite-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

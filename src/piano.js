@@ -1,19 +1,21 @@
 const OCTAVE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
+const PIANO_OCTAVES = [1, 2, 3, 4, 5, 6, 7]
+
 const SAMPLE_LIBRARY = {
     'Grand Piano': [
-        { note: 'A', octave: 4, file: 'assets/audio/samples/grand_piano/piano-f-a4.wav' },
-        { note: 'A', octave: 5, file: 'assets/audio/samples/grand_piano/piano-f-a5.wav' },
-        { note: 'A', octave: 6, file: 'assets/audio/samples/grand_piano/piano-f-a6.wav' },
-        { note: 'C', octave: 4, file: 'assets/audio/samples/grand_piano/piano-f-c4.wav' },
-        { note: 'C', octave: 5, file: 'assets/audio/samples/grand_piano/piano-f-c5.wav' },
-        { note: 'C', octave: 6, file: 'assets/audio/samples/grand_piano/piano-f-c6.wav' },
-        { note: 'D#', octave: 4, file: 'assets/audio/samples/grand_piano/piano-f-d#4.wav' },
-        { note: 'D#', octave: 5, file: 'assets/audio/samples/grand_piano/piano-f-d#5.wav' },
-        { note: 'D#', octave: 6, file: 'assets/audio/samples/grand_piano/piano-f-d#6.wav' },
-        { note: 'F#', octave: 4, file: 'assets/audio/samples/grand_piano/piano-f-f#4.wav' },
-        { note: 'F#', octave: 5, file: 'assets/audio/samples/grand_piano/piano-f-f#5.wav' },
-        { note: 'F#', octave: 6, file: 'assets/audio/samples/grand_piano/piano-f-f#6.wav' }
+        { note: 'A', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-a4.wav' },
+        { note: 'A', octave: 5, file: '/assets/audio/samples/grand_piano/piano-f-a5.wav' },
+        { note: 'A', octave: 6, file: '/assets/audio/samples/grand_piano/piano-f-a6.wav' },
+        { note: 'C', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-c4.wav' },
+        { note: 'C', octave: 5, file: '/assets/audio/samples/grand_piano/piano-f-c5.wav' },
+        { note: 'C', octave: 6, file: '/assets/audio/samples/grand_piano/piano-f-c6.wav' },
+        { note: 'D#', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-d#4.wav' },
+        { note: 'D#', octave: 5, file: '/assets/audio/samples/grand_piano/piano-f-d#5.wav' },
+        { note: 'D#', octave: 6, file: '/assets/audio/samples/grand_piano/piano-f-d#6.wav' },
+        { note: 'F#', octave: 4, file: '/assets/audio/samples/grand_piano/piano-f-f#4.wav' },
+        { note: 'F#', octave: 5, file: '/assets/audio/samples/grand_piano/piano-f-f#5.wav' },
+        { note: 'F#', octave: 6, file: '/assets/audio/samples/grand_piano/piano-f-f#6.wav' }
     ]
 };
 
@@ -87,9 +89,7 @@ function getSampleSource(instrument, note) {
         });
 }
 
-const pianoOctaves = [1, 2, 3, 4, 5, 6, 7]
-
-const pianoNotes = pianoOctaves.reduce((accumulator, currentValue) => {
+const pianoNotes = PIANO_OCTAVES.reduce((accumulator, currentValue) => {
     return accumulator.concat(getNotesForOctave(currentValue))
 }, []);
 
@@ -145,7 +145,12 @@ function renderPianoUi(container, notes) {
 }
 
 
+//TODO: Add types
+//TODO: Add tests
+//TODO: rename styles to use BEM or use a component framework
+//TODO: use component framework ?
+//TODO: load tunes
+//TODO: add compatable scales
+//TODO: remap keys to fit scales and chord shapes
 
-renderPianoUi(document.querySelector('.piano'), pianoNotes)
-
-export { getSampleSource };
+export { getSampleSource, renderPianoUi, pianoNotes, OCTAVE };
