@@ -115,9 +115,8 @@ function fetchSample(path: string): Promise<AudioBuffer> {
 
 function getSampleSource(instrument: string, note: string): ?Promise<AudioBufferSourceNode> {
     const sample: ?Promise<Sample> = getSample(instrument, note)
-
     if (sample) {
-        sample.then(({ audioBuffer, distance }) => {
+        return sample.then(({ audioBuffer, distance }) => {
             let playbackRate = Math.pow(2, distance / 12);
             let bufferSource = audioContext.createBufferSource();
             bufferSource.buffer = audioBuffer;
@@ -140,7 +139,6 @@ function getNotesForOctave(octave: number): Array<Note> {
             note,
             octave,
             control: () => getSampleSource(key.instrument, key.noteString),
-            //Boolean if note is a sharp
             sharp: note.length == 2
         }
         return key
@@ -155,7 +153,7 @@ function renderPianoUi(container: ?Element , notes: Array<Note>): void {
         const button = document.createElement('button')
         const listElement = keysWrapper.appendChild(list)
 
-        button.addEventListener('mousedown', () => { 
+        button.addEventListener('mousedown', () => {
             const sample = key.control();
             if (sample) {
                 sample.then(buffer => {
@@ -183,12 +181,13 @@ function renderPianoUi(container: ?Element , notes: Array<Note>): void {
 }
 
 
-//TODO: Add types
-//TODO: Add tests
-//TODO: rename styles to use BEM or use a component framework
-//TODO: use component framework ?
-//TODO: load tunes
-//TODO: add compatable scales
-//TODO: remap keys to fit scales and chord shapes
+//@TODO: cache samples in memory
+//@TODO: Add types
+//@TODO: Add tests
+//@TODO: rename styles to use BEM or use a component framework
+//@TODO: use component framework ?
+//@TODO: load tunes
+//@TODO: add compatable scales
+//@TODO: remap keys to fit scales and chord shapes
 
 export { getSampleSource, renderPianoUi, PIANO_NOTES, OCTAVE };
