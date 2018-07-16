@@ -6,7 +6,6 @@ type Note = {
     noteString: string,
     note: string,
     octave: number,
-    control: () => ?Promise<AudioBufferSourceNode>,
     sharp: boolean
 }
 

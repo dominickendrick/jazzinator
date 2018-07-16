@@ -1,4 +1,5 @@
 import { SAMPLER, OCTAVE } from "./piano.js";
+import { Note } from "tonal"
 
 function initMidi(): void {
     // Request MIDI access
@@ -34,13 +35,13 @@ function onMIDIFailure(): void {
 function getMIDIMessage(message: MIDIMessageEvent): void {
     var command = message.data[0];
     var note = message.data[1];
-    var velocity = (message.data.length > 2) ? message.data[2] : 0; // a velocity value might not be included with a noteOff command
+    var velocity = (message.data.length > 2) ? message.data[2] / 100 : 0; // a velocity value might not be included with a noteOff command
     switch (command) {
         case 144: // note on
             if (velocity > 0) {
-                noteOn(note, velocity / 100);
+                noteOn(note, velocity);
             } else {
-                noteOff(note, velocity / 100);
+                noteOff(note, velocity);
             }
             break;
         case 128: // note off
@@ -54,9 +55,9 @@ function getMIDIMessage(message: MIDIMessageEvent): void {
 // Think of this like an 'onkeydown' event
 function noteOn(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
+    SAMPLER.triggerAttack(key)
     const keyElement = document.getElementsByClassName(key)[0]
     keyElement.classList.add('pressed')
-    SAMPLER.triggerAttack(key)
 }
 
 // Function to handle noteOff messages (ie. key is released)

@@ -34,7 +34,6 @@ type Chart = {
 }
 
 
-//@TODO: play a chord
 
 const chart = 'Autumn_Leaves.json'
 
