@@ -1,0 +1,323 @@
+{
+  "Title": "Silver's Serenade",
+  "Artist": "Horace Silver",
+  "Style": "Medium Swing",
+  "CreatedBy": "rtrb.io",
+  "Collaborators": [],
+  "DateCreated": "2018-07-16T09:26:14.283Z",
+  "LastUpdated": "2018-07-16T09:26:14.283Z",
+  "Clones": 191,
+  "Ratings": [
+    0,
+    0,
+    0,
+    11,
+    57
+  ],
+  "ChartData": [
+    {
+      "BarData": [
+        "E-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "E-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "B",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "/",
+        "/",
+        "B7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "C-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "Eb^7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7#11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7#11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G69",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7#11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    }
+  ]
+}

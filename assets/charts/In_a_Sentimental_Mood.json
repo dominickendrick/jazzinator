@@ -1,0 +1,419 @@
+{
+  "Title": "In a Sentimental Mood",
+  "Artist": "Duke Ellington",
+  "Style": "Ballad",
+  "CreatedBy": "rtrb.io",
+  "Collaborators": [],
+  "DateCreated": "2018-07-16T09:26:13.833Z",
+  "LastUpdated": "2018-07-16T09:26:13.833Z",
+  "Clones": 223,
+  "Ratings": [
+    0,
+    0,
+    0,
+    24,
+    77
+  ],
+  "ChartData": [
+    {
+      "BarData": [
+        "D-",
+        "",
+        "D-^7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "{"
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "D-6",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-",
+        "",
+        "G-^7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "G-7",
+        "A7"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D9#5",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "C7b9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F6",
+        "",
+        "Eh",
+        "A7"
+      ],
+      "Denominator": 4,
+      "EndBarline": "}",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": "1",
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F6",
+        "",
+        "Eb-7",
+        "Ab7"
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": "2",
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Db^7",
+        "",
+        "Bb-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "B",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "Eb-7",
+        "",
+        "Ab7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Db6",
+        "",
+        "Bb7#5",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb-7",
+        "",
+        "Ab7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Db^7",
+        "",
+        "Bb-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb-7",
+        "",
+        "Ab7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-",
+        "",
+        "D-^7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "D-6",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-",
+        "",
+        "G-^7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "G-7",
+        "A7"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D9#5",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "C7b9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F6",
+        "",
+        "Eh",
+        "A7"
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    }
+  ]
+}

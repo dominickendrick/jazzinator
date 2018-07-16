@@ -1,0 +1,531 @@
+{
+  "Title": "They Didn't Believe Me",
+  "Artist": "Jerome Kern",
+  "Style": "Medium Swing",
+  "CreatedBy": "rtrb.io",
+  "Collaborators": [],
+  "DateCreated": "2018-07-16T09:26:14.377Z",
+  "LastUpdated": "2018-07-16T09:26:14.377Z",
+  "Clones": 65,
+  "Ratings": [
+    0,
+    0,
+    0,
+    14,
+    79
+  ],
+  "ChartData": [
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "B-7",
+        "",
+        "E7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "B-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "B-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C#h7",
+        "",
+        "F#7b13",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "B-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "B",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "F7b5",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "A-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "B-7",
+        "",
+        "E7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    }
+  ]
+}

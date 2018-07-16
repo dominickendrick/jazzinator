@@ -1,0 +1,515 @@
+{
+  "Title": "In Her Family",
+  "Artist": "Pat Metheny",
+  "Style": "Even 8ths",
+  "CreatedBy": "rtrb.io",
+  "Collaborators": [],
+  "DateCreated": "2018-07-16T09:26:13.830Z",
+  "LastUpdated": "2018-07-16T09:26:13.830Z",
+  "Clones": 47,
+  "Ratings": [
+    0,
+    0,
+    0,
+    12,
+    98
+  ],
+  "ChartData": [
+    {
+      "BarData": [
+        "G#-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "{"
+    },
+    {
+      "BarData": [
+        "D^7/F#",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E^9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D#-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C#-7",
+        "",
+        "E^9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F#2",
+        "",
+        "E^9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C#-7",
+        "",
+        "G#-9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F#/A#",
+        "",
+        "Aadd9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E/G#",
+        "",
+        "Bb^7#11/F",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "Bb^7#11/D",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "Bb^7#11",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "}",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "B",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D/C",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C/Bb",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Ab^7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E/D",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F#-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "F#-7",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb-11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A-11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C#-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G#-9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E^7#11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E^7#11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "Bb^7#11/F",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    }
+  ]
+}

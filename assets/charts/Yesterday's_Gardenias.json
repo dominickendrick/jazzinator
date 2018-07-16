@@ -1,0 +1,547 @@
+{
+  "Title": "Yesterday's Gardenias",
+  "Artist": "Robertson Mysels",
+  "Style": "Medium Swing",
+  "CreatedBy": "rtrb.io",
+  "Collaborators": [],
+  "DateCreated": "2018-07-16T09:26:14.491Z",
+  "LastUpdated": "2018-07-16T09:26:14.491Z",
+  "Clones": 260,
+  "Ratings": [
+    0,
+    0,
+    0,
+    25,
+    35
+  ],
+  "ChartData": [
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "C-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "G7b9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-7",
+        "",
+        "Bo7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-7",
+        "",
+        "F9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "Eb9#11",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "G-7",
+        "/F"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E-11",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D^7",
+        "",
+        "B-7",
+        "/A"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "B",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "Ab-7",
+        "",
+        "Db9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Gb^7",
+        "",
+        "Ab-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb-7",
+        "",
+        "Bb9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb^7",
+        "",
+        "C-7",
+        "/Bb"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "A9",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D^7",
+        "",
+        "B-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-11",
+        "",
+        "F9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "C-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "A",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "G7b9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-7",
+        "",
+        "Bo7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-7",
+        "",
+        "F9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^7",
+        "",
+        "Eb9#11",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "D-7",
+        "",
+        "G-7",
+        "/F"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "E-7",
+        "",
+        "A9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Ah7",
+        "",
+        "D7b9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "]",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb^7",
+        "",
+        "C-7",
+        "/Bb"
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": "C",
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "["
+    },
+    {
+      "BarData": [
+        "A-7",
+        "",
+        "D7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G-7",
+        "",
+        "Dh7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "G7b9",
+        "",
+        "Db9#11",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "C-9",
+        "",
+        "D-7",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Eb^7",
+        "",
+        "F9sus",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb69",
+        "",
+        "Db9",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "|",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": null,
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Gb^7",
+        "",
+        "F9sus",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    },
+    {
+      "BarData": [
+        "Bb^",
+        "",
+        "",
+        ""
+      ],
+      "Denominator": 4,
+      "EndBarline": "Z",
+      "BarWidth": 1,
+      "Comment": null,
+      "Section": null,
+      "TimeBar": null,
+      "Symbol": "Q",
+      "StartBarline": "|"
+    }
+  ]
+}
