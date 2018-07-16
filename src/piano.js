@@ -57,7 +57,6 @@ function getNotesForOctave(octave: number): Array<Note> {
             noteString,
             note,
             octave,
-            control: () => getSampleSource(key.instrument, key.noteString),
             sharp: note.length == 2
         }
         return key
@@ -95,13 +94,9 @@ function renderPianoUi(container: ?Element , notes: Array<Note>): void {
     }
 }
 
-
-//@TODO: cache samples in memory
-//@TODO: Add types
 //@TODO: Add tests
 //@TODO: rename styles to use BEM or use a component framework
 //@TODO: use component framework ?
-//@TODO: load tunes
 //@TODO: add compatable scales
 //@TODO: remap keys to fit scales and chord shapes
 

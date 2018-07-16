@@ -1,13 +1,15 @@
 import { CHARTS } from '../assets/charts.js';
+import { SAMPLER } from './piano.js';
 
 import Tone from 'tone';
+import { Note, Interval, Distance, Scale, Chord } from "tonal";
 
 var synth = new Tone.Synth().toMaster()
 
-type Chord = string;
+type Chords = string;
 
 type Bar = {
-    BarData: Array<Chord>,
+    BarData: Array<Chords>,
     Denominator: number,
     EndBarline: string,
     BarWidth: number,
@@ -55,20 +57,49 @@ function chordSequenceFromChart(chart: string): Chart {
         bar.BarData.forEach((chord, beat) => {
 
             //Time is in the format BARS:QUARTERS:SIXTEENTHS.
-            const time = `${barNumber}:${beat}`
+            const time = `${barNumber}:${beat}:0`
             const playAndDisplay = displayChords(chord)
             Tone.Transport.schedule(playAndDisplay, time)
         })
     });
 }
 
+function clearKeys() {
+    Array.from(document.getElementsByClassName("pianoKey"))
+        .forEach((note) => {
+            note.classList.remove("pressed")
+        })
+}
+
 function displayChords(chord: string): () => void {
     return (time) => {
-        synth.triggerAttackRelease('C2', '8n', time)
+
+        synth.triggerAttackRelease('C2', '32n', time)
+
         if (chord !== "") {
+            clearKeys();
+            const chordNotes = Chord.notes(parseChordName(chord))
+
+            console.log(chordNotes)
+            chordNotes.forEach((note) => {
+                let newNote = note
+                if(note.indexOf('b') > -1) {
+                    newNote = Note.enharmonic(note)
+                }
+                //set to 4th octave
+                const chordOctave = newNote + '4'
+                SAMPLER.triggerAttackRelease(chordOctave, '1n')
+                console.log(chordOctave)
+                const keyElement = document.getElementsByClassName(chordOctave)[0]
+                keyElement.classList.add('pressed')
+            })
             document.querySelector('.currentChord').textContent = chord
         }
     }
+}
+
+function parseChordName(chord: string): string {
+    return chord.replace(/-/, "m").replace(/\^/, "M")
 }
 
 
