@@ -1,19 +1,109 @@
-let tune = "irealb://%44%6F%78%79=%52%6F%6C%6C%69%6E%73%20%53%6F%6E%6E%79==%4D%65%64%69%75%6D%20%53%77%69%6E%67=%42%62==%31%72%33%34%4C%62%4B%63%75%37%28%37%41%20%37%62%37%20%41%37%58%37%62%42%5A%4C%37%46%20%37%43%5A%4C%37%20%47%29%37%44%28%37%62%41%5A%4C%29%37%62%45%28%79%51%7C%42%62%42%34%34%54%5B%45%7C%51%79%58%5A%41%62%37%28%20%6C%63%4B%51%79%58%37%62%42%7C%51%79%58%46%37%7C%51%79%58%37%43%5A%4C%37%47%20%29%37%44%4C%5A%45%62%37%4C%29%37%62%45%6F%37%58%79%51%7C%42%62%37%20%41%37%28%45%62%37%29%4C%5A%41%62%37%28%44%37%29%20%47%37%4C%5A%43%37%20%46%37%4C%5A%42%62%37%20%46%37%20%5A==%30=%30==="
+import { CHARTS } from '../assets/charts.js';
 
-function parseTune(tune) {
-	console.log(decodeURI(tune))
+import Tone from 'tone';
+
+var synth = new Tone.Synth().toMaster()
+
+type Chord = string;
+
+type Bar = {
+    BarData: Array<Chord>,
+    Denominator: number,
+    EndBarline: string,
+    BarWidth: number,
+    Comment: ?string,
+    Section: ?string,
+    TimeBar: ?string,
+    Symbol: ?string,
+    StartBarline: ?string
+}
+
+type Chart = {
+  Title: ?string,
+  Artist: ?string,
+  Style: ?string,
+  CreatedBy: ?string,
+  Collaborators: ?Array<string>,
+  DateCreated: ?string,
+  LastUpdated: ?string,
+  Clones: ?number,
+  Ratings: ?Array<number>,
+  ChartData: Array<Bar>
 }
 
 
-function renderBackingUi(container, tune) {
+//@TODO: play a chord
 
-	parseTune(tune)
-    let keysWrapper = document.createElement('ol')
+const chart = 'Autumn_Leaves.json'
 
-    container.appendChild(keysWrapper)
+function loadChart(chart: string): ?Promise<Chart> {
+
+    //@todo: cache this!
+    const asset_path = '/assets/charts/'
+    const path = asset_path + chart
+    console.log(path)
+    return fetch(encodeURIComponent(path))
+        .then(response => response.json())
+        .then(data => chordSequenceFromChart(data))
+}
+
+function chordSequenceFromChart(chart: string): Chart {
+    //schedule a set of chords to play from the chord chart
+    chart.ChartData.forEach((bar, barNumber) => {
+
+        //loop over the chords for each bar
+        bar.BarData.forEach((chord, beat) => {
+
+            //Time is in the format BARS:QUARTERS:SIXTEENTHS.
+            const time = `${barNumber}:${beat}`
+            const playAndDisplay = displayChords(chord)
+            Tone.Transport.schedule(playAndDisplay, time)
+        })
+    });
+}
+
+function displayChords(chord: string): () => void {
+    return (time) => {
+        synth.triggerAttackRelease('C2', '8n', time)
+        if (chord !== "") {
+            document.querySelector('.currentChord').textContent = chord
+        }
+    }
+}
+
+
+function updateTime(){
+    requestAnimationFrame(updateTime)
+    //the time elapsed in seconds
+    document.querySelector('.seconds').textContent = Tone.Transport.seconds.toFixed(2)
+
+}
+
+function renderBackingUi() {
+
+    updateTime()
+
+    document.querySelector('.playToggle').addEventListener('change', function(e){
+        if (e.target.checked){
+            loadChart(chart)
+            Tone.Transport.start()
+        } else {
+            Tone.Transport.pause()
+        }
+    })
+
+    document.querySelector('.stop').addEventListener('click', function(e){
+        Tone.Transport.stop()
+    })
+
+    document.querySelector('.bpmSlider').addEventListener('input', function(e){
+        const bpm = parseInt(e.target.value)
+        Tone.Transport.bpm.value = bpm
+        document.querySelector('.bpmValue').textContent = bpm
+    })
 }
 
 
 
 
-renderBackingUi(document.querySelector('.backing'), tune)
+export { renderBackingUi }

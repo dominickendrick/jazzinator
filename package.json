@@ -5,6 +5,7 @@
   "private": "true",
   "dependencies": {
     "npm": "^6.1.0",
+    "tone": "^13.2.0",
     "webpack": "^4.15.1"
   },
   "devDependencies": {

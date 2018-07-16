@@ -1,4 +1,4 @@
-import { getSampleSource, OCTAVE } from "./piano.js";
+import { SAMPLER, OCTAVE } from "./piano.js";
 
 function initMidi(): void {
     // Request MIDI access
@@ -38,14 +38,13 @@ function getMIDIMessage(message: MIDIMessageEvent): void {
     switch (command) {
         case 144: // note on
             if (velocity > 0) {
-                noteOn(note);
-                console.log(message)
+                noteOn(note, velocity / 100);
             } else {
-                noteOff(note);
+                noteOff(note, velocity / 100);
             }
             break;
         case 128: // note off
-            noteOffCallback(note);
+            noteOff(note);
             break;
         // we could easily expand this switch statement to cover other types of commands such as controllers or sysex
     }
@@ -53,22 +52,20 @@ function getMIDIMessage(message: MIDIMessageEvent): void {
 
 // Function to handle noteOn messages (ie. key is pressed)
 // Think of this like an 'onkeydown' event
-function noteOn(note: string): void {
+function noteOn(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
     const keyElement = document.getElementsByClassName(key)[0]
     keyElement.classList.add('pressed')
-    const sample = getSampleSource('Grand Piano', key)
-    sample.then(buffer => {
-        buffer.start()
-    });
+    SAMPLER.triggerAttack(key)
 }
 
 // Function to handle noteOff messages (ie. key is released)
 // Think of this like an 'onkeyup' event
-function noteOff(note: string): void {
+function noteOff(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
     const keyElement = document.getElementsByClassName(key)[0]
     keyElement.classList.remove('pressed')
+    //SAMPLER.triggerRelease(key)
 }
 
 function getKeyFromId(id: number): string {

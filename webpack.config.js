@@ -6,6 +6,12 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: {
+    alias: {
+      Tone: path.resolve(__dirname, '/node_modules/tone/Tone')
+    },
+    modules : ['node_modules']
+  },
   watch: true,
   module: {
     rules: [
@@ -24,5 +30,5 @@ module.exports = {
   stats: {
      colors: true
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 };
