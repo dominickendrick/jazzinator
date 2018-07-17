@@ -1,7 +1,7 @@
+/* @flow */
+import Tone from 'tone';
 import { CHARTS } from '../assets/charts.js';
 import { SAMPLER } from './piano.js';
-
-import Tone from 'tone';
 import { Note, Interval, Distance, Scale, Chord } from "tonal";
 
 var synth = new Tone.Synth().toMaster()

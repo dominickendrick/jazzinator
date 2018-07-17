@@ -11,11 +11,11 @@ module.exports = {
     rules: [
       {
         exclude: /(node_modules|bower_components)/,
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: {
            loader: 'babel-loader',
            options: {
-             presets: ['env']
+             presets: ['env', 'react', 'stage-2']
            }
         }
        }

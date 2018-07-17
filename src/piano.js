@@ -1,5 +1,8 @@
 // @flow
 import Tone from 'tone';
+import React from 'react';
+import ReactDOM from 'react-dom'
+import classNames from 'classnames'
 
 type Note = {
     instrument: string,
@@ -47,56 +50,45 @@ const SAMPLER = new Tone.Sampler({
 
 function getNotesForOctave(octave: number): Array<Note> {
     return OCTAVE.map(note => {
-        const instrument = 'Grand Piano'
-            // The note and octave as a string ie 'C4'
-        const noteString = note + octave
-
-        const key = {
-            instrument,
-            noteString,
+        return {
+            noteString: note + octave,
             note,
             octave,
             sharp: note.length == 2
         }
-        return key
     });
 }
 
-function renderPianoUi(container: ?Element , notes: Array<Note>): void {
-    const keysWrapper = document.createElement('ol')
 
-    notes.forEach(key => {
-        const list = document.createElement('li')
-        const button = document.createElement('button')
-        const listElement = keysWrapper.appendChild(list)
+function Piano(props) {
+  const keys = props.notes.map((key) => {
+    return (
+      <li key={key.noteString} >
+        <Key note={key.noteString} isSharp={key.sharp} />
+      </li>
+      )
+  })
 
-        button.addEventListener('mousedown', () => {
-            const piano = SAMPLER.triggerAttack(key.noteString)
-        })
-        button.addEventListener('mouseup', () => {
-            //const piano = SAMPLER.triggerRelease(key.noteString, 1)
-        })
+  return <ol>{keys}</ol>
+}
 
-        button.textContent = key.noteString
-        button.classList.add(key.noteString)
-        button.classList.add('pianoKey')
+function Key(props) {
+  const classes =  classNames(
+    props.note,
+    'pianoKey',
+    {'sharp': props.isSharp}
+  );
 
-        if (key.sharp) {
-            button.classList.add('sharp')
-        }
-
-        listElement.appendChild(button)
-    })
-
-    if (container != null) {
-        container.appendChild(keysWrapper)
-    }
+  return (
+    <button className={classes} onMouseDown={() => SAMPLER.triggerAttack(props.note)}>
+      {props.note}
+    </button>
+  )
 }
 
 //@TODO: Add tests
 //@TODO: rename styles to use BEM or use a component framework
-//@TODO: use component framework ?
 //@TODO: add compatable scales
 //@TODO: remap keys to fit scales and chord shapes
 
-export { SAMPLER, renderPianoUi, PIANO_NOTES, OCTAVE };
+export { SAMPLER, Piano, PIANO_NOTES, OCTAVE };
