@@ -17,7 +17,7 @@ function initMidi(): void {
 function onMIDISuccess(midiAccess: MIDIAccess): void {
     var inputs = midiAccess.inputs;
     var outputs = midiAccess.outputs;
-
+    console.log("Midi Success")
     // Attach MIDI event "listeners" to each input
     for (var input of midiAccess.inputs.values()) {
         input.onmidimessage = getMIDIMessage;
@@ -56,6 +56,7 @@ function getMIDIMessage(message: MIDIMessageEvent): void {
 function noteOn(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
     SAMPLER.triggerAttack(key)
+    console.log("pressed")
     const keyElement = document.getElementsByClassName(key)[0]
     keyElement.classList.add('pressed')
 }

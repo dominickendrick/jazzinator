@@ -35,22 +35,27 @@ type Chart = {
   ChartData: Array<Bar>
 }
 
-
-
-const chart = 'Autumn_Leaves.json'
-
-function loadChart(chart: string): ?Promise<Chart> {
-
-    //@todo: cache this!
-    const asset_path = '/assets/charts/'
-    const path = asset_path + chart
-    console.log(path)
-    return fetch(encodeURIComponent(path))
-        .then(response => response.json())
-        .then(data => chordSequenceFromChart(data))
+function loadChart(chart: string, handleChordsLoad, handleCurrentChordChange, chords, currentChord, handleCurrentChart): ?Promise<Chart> {
+    //remove loaded chords and reset the transport timeline
+    Tone.Transport.cancel()
+    Tone.Transport.stop()
+    if(chords && !chords.hasOwnProperty(chart)) {
+      console.log("no chords")
+      const asset_path = '/assets/charts/'
+      const path = asset_path + chart
+      console.log(path)
+      return fetch(encodeURIComponent(path))
+          .then(response => response.json())
+          .then(data => {
+            handleChordsLoad({[chart] : data})
+            handleCurrentChart(chart)
+          })
+    } 
 }
 
-function chordSequenceFromChart(chart: string): Chart {
+function chordSequenceFromChart(chart: json): Chart {
+    //clear all previous loaded chords
+    Tone.Transport.cancel()
     //schedule a set of chords to play from the chord chart
     chart.ChartData.forEach((bar, barNumber) => {
 
@@ -73,30 +78,25 @@ function clearKeys() {
 }
 
 function displayChords(chord: string): () => void {
-    return (time) => {
-
-        synth.triggerAttackRelease('C2', '32n', time)
-
-        if (chord !== '') {
-            clearKeys();
-            const chordNotes = Chord.notes(parseChordName(chord))
-
-            console.log(chordNotes)
-            chordNotes.forEach((note) => {
-                let newNote = note
-                if(note.indexOf('b') > -1) {
-                    newNote = Note.enharmonic(note)
-                }
-                //set to 4th octave
-                const chordOctave = newNote + '4'
-                SAMPLER.triggerAttackRelease(chordOctave, '1n')
-                console.log(chordOctave)
-                const keyElement = document.getElementsByClassName(chordOctave)[0]
-                keyElement.classList.add('pressed')
-            })
-            document.querySelector('.currentChord').textContent = chord
-        }
+  return (time) => {
+    synth.triggerAttackRelease('C2', '32n', time)
+    if (chord !== '') {
+        clearKeys();
+        const chordNotes = Chord.notes(parseChordName(chord))
+        chordNotes.forEach((note) => {
+            let newNote = note
+            if(note.indexOf('b') > -1) {
+                newNote = Note.enharmonic(note)
+            }
+            //set to 4th octave
+            const chordOctave = newNote + '4';
+            SAMPLER.triggerAttackRelease(chordOctave, '1n');
+            const keyElement = document.getElementsByClassName(chordOctave)[0]
+            keyElement.classList.add('pressed')
+        })
+        document.querySelector('.currentChord').textContent = chord
     }
+  }
 }
 
 function parseChordName(chord: string): string {
@@ -104,53 +104,86 @@ function parseChordName(chord: string): string {
 }
 
 
-function updateTime(){
-    requestAnimationFrame(updateTime)
-    //the time elapsed in seconds
-    document.querySelector('.seconds').textContent = Tone.Transport.seconds.toFixed(2)
+class PlaybackElapsedTime extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {elapsedSeconds: 0};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 100);
+  }
+
+  tick() {
+    this.setState({elapsedSeconds: Tone.Transport.seconds.toFixed(1) })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  
+  render() {
+    return <p>Seconds: <span className='seconds'>{this.state.elapsedSeconds}</span></p>
+  }
 
 }
 
-function PlaybackElapsedTime (props) {
-    return <p>Seconds: <span className='seconds'>{props.time}</span></p>
-}
+class PlayPauseButton extends React.Component {
 
-function PlayPauseButton (props) {
-    
-    function handlePlayPause (e) {
-      if (e.target.checked){
-          loadChart(chart)
-          Tone.Transport.start()
+  constructor(props) {
+    super(props)
+    this.state = { error: false }
+  }
+  
+  handlePlayPause = (e) => {
+    if (e.target.checked) {
+      if(Object.keys(this.props.chords).length != 0){
+        this.setState({error : false})
+        if(Tone.Transport.state !== 'paused'){
+          chordSequenceFromChart(this.props.chords[this.props.currentChart])
+        }
+        Tone.Transport.start()
       } else {
-          Tone.Transport.pause()
+        this.setState({error : true})
       }
+    } else {
+        Tone.Transport.pause()
     }
+  }
 
-    function handleStop(e) {
-      Tone.Transport.stop()
-    }
+  handleStop = (e) => {
+    Tone.Transport.stop()
+  }
+
+  render() {
+
+    const error = this.state.error
 
     return (
-        <fieldset>
-            <legend>Playback controls</legend>
-            <label htmlFor='playToggle'>Play/Pause</label>
-            <input 
-                type='checkbox' 
-                id='playToggle' 
-                name='playToggle'
-                value='playToggle' 
-                className='playToggle' 
-                onChange={handlePlayPause}
-            />
-            <input 
-              type='button' 
-              className='stop' 
-              value='Stop' 
-              onClick={handleStop}
-            />
-            <PlaybackElapsedTime time={Tone.Transport.seconds.toFixed(2)} />
-        </fieldset>
+      <fieldset>
+          <legend>Playback controls</legend>
+          <label htmlFor='playToggle'>Play/Pause</label>
+          <input 
+              type='checkbox' 
+              id='playToggle' 
+              name='playToggle'
+              value='playToggle' 
+              className='playToggle' 
+              onChange={this.handlePlayPause}
+          />
+          <input 
+            type='button' 
+            className='stop' 
+            value='Stop' 
+            onClick={this.handleStop}
+          />
+
+          {error && <div className='error'>No Chart has been loaded!</div>}
+          <PlaybackElapsedTime />
+      </fieldset>
     )
+  }
 }
 
 class BpmControl extends React.Component {
@@ -160,10 +193,10 @@ class BpmControl extends React.Component {
     this.state = { bpm: 120 }
   }
   
-  handleSliderUpate (e) {
-    const bpm = parseInt(e.target.value)
-    Tone.Transport.bpm.value = bpm
+  handleSliderUpate = (element) => {
+    const bpm = parseInt(element.target.value)
     this.setState({ bpm: bpm })
+    Tone.Transport.bpm.value = bpm
   }
 
   render() {
@@ -173,8 +206,8 @@ class BpmControl extends React.Component {
           <input 
             type='range' 
             value={this.state.bpm} 
-            min='80' 
-            max='200' 
+            min='30' 
+            max='400' 
             className='bpmSlider' 
             id='bpmSlider' 
             onChange={this.handleSliderUpate}
@@ -189,7 +222,7 @@ class BpmControl extends React.Component {
   }
 }
 
-function CurrentChord (props) {
+function CurrentChord(props) {
   return(
     <div className="backing">
         <fieldset>
@@ -200,10 +233,52 @@ function CurrentChord (props) {
     )
 }
 
-function BackingControls (props) {
+function LoadChart(props) {
+
+  const parseChartName = (name) => {
+    return name.replace(/_/g, ' ').replace(/\.json/, '')
+  }
+
+  const handleChartSelect = (e) => {
+    console.log("loading chart", props)
+    loadChart(e.target.value, props.handleChordsLoad, props.handleCurrentChordChange, props.chords, props.currentChord, props.handleCurrentChart)
+  }
+  
+  return (
+    <fieldset>
+      <legend>Tunes</legend>
+      <select id="chart-select" name="chart" value={props.currentChart} size="10" onChange={handleChartSelect}>
+      <option value="none">Select a chart</option>
+        {props.charts.map((chart) => {
+          return <option key={chart} value={chart}>{parseChartName(chart)}</option>})
+        }
+      </select>
+      <p>Current Chart: {parseChartName(props.currentChart)}</p>
+  </fieldset>
+)
+}
+
+function BackingControls(props) {
   return (
     <div className='backingControls'>
-      <PlayPauseButton />
+      <LoadChart 
+        charts={CHARTS} 
+        handleChordsLoad={props.handleChordsLoad}
+        handleCurrentChordChange={props.handleCurrentChordChange}
+        handleCurrentChart={props.handleCurrentChart}
+        chords={props.chords}
+        currentChart={props.currentChart}
+        currentChord={props.currentChord} 
+      />
+      <PlayPauseButton 
+        handleKeyChange={props.handleKeyChange} 
+        handleChordsLoad={props.handleChordsLoad}
+        handleCurrentChordChange={props.handleCurrentChordChange}
+        handleCurrentChart={props.handleCurrentChart}
+        chords={props.chords}
+        currentChart={props.currentChart}
+        currentChord={props.currentChord} 
+      />
       <BpmControl />
       <CurrentChord />
     </div>
