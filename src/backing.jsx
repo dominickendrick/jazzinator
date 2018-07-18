@@ -1,8 +1,10 @@
 /* @flow */
 import Tone from 'tone';
+import React from 'react';
+import ReactDOM from 'react-dom'
 import { CHARTS } from '../assets/charts.js';
 import { SAMPLER } from './piano.js';
-import { Note, Interval, Distance, Scale, Chord } from "tonal";
+import { Note, Interval, Distance, Scale, Chord } from 'tonal';
 
 var synth = new Tone.Synth().toMaster()
 
@@ -64,9 +66,9 @@ function chordSequenceFromChart(chart: string): Chart {
 }
 
 function clearKeys() {
-    Array.from(document.getElementsByClassName("pianoKey"))
+    Array.from(document.getElementsByClassName('pianoKey'))
         .forEach((note) => {
-            note.classList.remove("pressed")
+            note.classList.remove('pressed')
         })
 }
 
@@ -75,7 +77,7 @@ function displayChords(chord: string): () => void {
 
         synth.triggerAttackRelease('C2', '32n', time)
 
-        if (chord !== "") {
+        if (chord !== '') {
             clearKeys();
             const chordNotes = Chord.notes(parseChordName(chord))
 
@@ -98,7 +100,7 @@ function displayChords(chord: string): () => void {
 }
 
 function parseChordName(chord: string): string {
-    return chord.replace(/-/, "m").replace(/\^/, "M")
+    return chord.replace(/-/, 'm').replace(/\^/, 'M')
 }
 
 
@@ -109,31 +111,106 @@ function updateTime(){
 
 }
 
-function renderBackingUi() {
+function PlaybackElapsedTime (props) {
+    return <p>Seconds: <span className='seconds'>{props.time}</span></p>
+}
 
-    updateTime()
+function PlayPauseButton (props) {
+    
+    function handlePlayPause (e) {
+      if (e.target.checked){
+          loadChart(chart)
+          Tone.Transport.start()
+      } else {
+          Tone.Transport.pause()
+      }
+    }
 
-    document.querySelector('.playToggle').addEventListener('change', function(e){
-        if (e.target.checked){
-            loadChart(chart)
-            Tone.Transport.start()
-        } else {
-            Tone.Transport.pause()
-        }
-    })
+    function handleStop(e) {
+      Tone.Transport.stop()
+    }
 
-    document.querySelector('.stop').addEventListener('click', function(e){
-        Tone.Transport.stop()
-    })
+    return (
+        <fieldset>
+            <legend>Playback controls</legend>
+            <label htmlFor='playToggle'>Play/Pause</label>
+            <input 
+                type='checkbox' 
+                id='playToggle' 
+                name='playToggle'
+                value='playToggle' 
+                className='playToggle' 
+                onChange={handlePlayPause}
+            />
+            <input 
+              type='button' 
+              className='stop' 
+              value='Stop' 
+              onClick={handleStop}
+            />
+            <PlaybackElapsedTime time={Tone.Transport.seconds.toFixed(2)} />
+        </fieldset>
+    )
+}
 
-    document.querySelector('.bpmSlider').addEventListener('input', function(e){
-        const bpm = parseInt(e.target.value)
-        Tone.Transport.bpm.value = bpm
-        document.querySelector('.bpmValue').textContent = bpm
-    })
+class BpmControl extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { bpm: 120 }
+  }
+  
+  handleSliderUpate (e) {
+    const bpm = parseInt(e.target.value)
+    Tone.Transport.bpm.value = bpm
+    this.setState({ bpm: bpm })
+  }
+
+  render() {
+    return (  
+      <fieldset>
+          <legend>Tempo in BPM</legend>
+          <input 
+            type='range' 
+            value={this.state.bpm} 
+            min='80' 
+            max='200' 
+            className='bpmSlider' 
+            id='bpmSlider' 
+            onChange={this.handleSliderUpate}
+          />
+          <label 
+            htmlFor='bpmSlider' 
+            className='bpmValue' >
+          {this.state.bpm} 
+          </label>
+      </fieldset>
+    )
+  }
+}
+
+function CurrentChord (props) {
+  return(
+    <div className="backing">
+        <fieldset>
+            <legend>Current Chord</legend>
+            <p className="currentChord"></p>
+        </fieldset>
+    </div>
+    )
+}
+
+function BackingControls (props) {
+  return (
+    <div className='backingControls'>
+      <PlayPauseButton />
+      <BpmControl />
+      <CurrentChord />
+    </div>
+    )
 }
 
 
 
 
-export { renderBackingUi }
+export { BackingControls }

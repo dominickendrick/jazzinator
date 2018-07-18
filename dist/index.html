@@ -75,25 +75,6 @@
 </head>
 
 <body>
-    <div class="backing">
-        <fieldset>
-            <legend>Playback controls</legend>
-            <label for="playToggle">Play/Pause</label>
-            <input type="checkbox" id="playToggle" name="playToggle"
-               value="playToggle" class="playToggle" />
-            <input type="button" class="stop" value="Stop" />
-            <p>Seconds: <span class="seconds "></span></p>
-        </fieldset>
-        <fieldset>
-            <legend>Tempo in BPM</legend>
-            <input type='range' value='120' min='80' max='200' class='bpmSlider' id='bpmSlider'>
-            <label for='bpmSlider' class="bpmValue">120</label>
-        </fieldset>
-        <fieldset>
-            <legend>Current Chord</legend>
-            <p class="currentChord"></p>
-        </fieldset>
-    </div>
     <div class="piano"></div>
     <!--<script src="https://cdn.rawgit.com/mohayonao/web-audio-api-shim/master/build/web-audio-api-shim.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>

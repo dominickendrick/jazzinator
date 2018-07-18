@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 
+import { BackingControls } from './backing.jsx';
+
 type Note = {
     instrument: string,
     noteString: string,
@@ -69,7 +71,13 @@ function Piano(props) {
       )
   })
 
-  return <ol>{keys}</ol>
+  return (
+    <div className='pianoContainer' >
+      <BackingControls />
+      <ol>{keys}</ol>
+    </div>
+
+    )
 }
 
 function Key(props) {
@@ -80,7 +88,10 @@ function Key(props) {
   );
 
   return (
-    <button className={classes} onMouseDown={() => SAMPLER.triggerAttack(props.note)}>
+    <button
+      className={classes}
+      onMouseDown={() => SAMPLER.triggerAttack(props.note)}
+    >
       {props.note}
     </button>
   )
