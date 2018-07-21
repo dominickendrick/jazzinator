@@ -1,4 +1,4 @@
-import { SAMPLER, OCTAVE } from "./piano.js";
+import { SAMPLER, OCTAVE } from "./Piano.js";
 import { Note } from "tonal"
 
 function initMidi(): void {

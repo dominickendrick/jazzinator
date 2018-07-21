@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { CHARTS } from '../assets/charts.js';
-import { SAMPLER } from './piano.js';
+import { SAMPLER } from './Piano.js';
 import { ChordChart } from './ChordChart.js';
 
 import { Note, Interval, Distance, Scale, Chord } from 'tonal';

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { Piano, PIANO_NOTES } from './piano.js';
-import { initMidi } from './midi.js';
+import { Piano, PIANO_NOTES } from './Piano.js';
+import { initMidi } from './Midi.js';
 
 initMidi();
 

@@ -4,6 +4,7 @@
   "description": "Browser based jazz piano",
   "private": "true",
   "dependencies": {
+    "aphrodite": "^2.2.2",
     "classnames": "^2.2.6",
     "npm": "^6.1.0",
     "react": "^16.4.1",

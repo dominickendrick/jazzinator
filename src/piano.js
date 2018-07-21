@@ -2,9 +2,9 @@
 import Tone from 'tone';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import classNames from 'classnames'
+import { StyleSheet, css } from 'aphrodite';
 
-import { BackingControls } from './backing.js';
+import { BackingControls } from './BackingControls.js';
 
 type Note = {
     instrument: string,
@@ -45,18 +45,18 @@ function getPianoNotes() {
 
 
 const SAMPLER = new Tone.Sampler({
-     'A4': '/assets/audio/samples/grand_piano/piano-f-a4.wav' ,
-      'A5': '/assets/audio/samples/grand_piano/piano-f-a5.wav' ,
-      'A6': '/assets/audio/samples/grand_piano/piano-f-a6.wav' ,
-      'C4': '/assets/audio/samples/grand_piano/piano-f-c4.wav' ,
-      'C5': '/assets/audio/samples/grand_piano/piano-f-c5.wav' ,
-      'C6': '/assets/audio/samples/grand_piano/piano-f-c6.wav' ,
-      'D#4': '/assets/audio/samples/grand_piano/piano-f-dsharp4.wav' ,
-      'D#5': '/assets/audio/samples/grand_piano/piano-f-dsharp5.wav' ,
-      'D#6': '/assets/audio/samples/grand_piano/piano-f-dsharp6.wav' ,
-      'F#4': '/assets/audio/samples/grand_piano/piano-f-fsharp4.wav' ,
-      'F#5': '/assets/audio/samples/grand_piano/piano-f-fsharp5.wav' ,
-      'F#6': '/assets/audio/samples/grand_piano/piano-f-fsharp6.wav'
+     'A4': '/assets/audio/samples/grand_piano/f-a4.wav' ,
+      'A5': '/assets/audio/samples/grand_piano/f-a5.wav' ,
+      'A6': '/assets/audio/samples/grand_piano/f-a6.wav' ,
+      'C4': '/assets/audio/samples/grand_piano/f-c4.wav' ,
+      'C5': '/assets/audio/samples/grand_piano/f-c5.wav' ,
+      'C6': '/assets/audio/samples/grand_piano/f-c6.wav' ,
+      'D#4': '/assets/audio/samples/grand_piano/f-dsharp4.wav' ,
+      'D#5': '/assets/audio/samples/grand_piano/f-dsharp5.wav' ,
+      'D#6': '/assets/audio/samples/grand_piano/f-dsharp6.wav' ,
+      'F#4': '/assets/audio/samples/grand_piano/f-fsharp4.wav' ,
+      'F#5': '/assets/audio/samples/grand_piano/f-fsharp5.wav' ,
+      'F#6': '/assets/audio/samples/grand_piano/f-fsharp6.wav'
   }
 ).toMaster()
 
@@ -76,14 +76,14 @@ function getNotesForOctave(octave: number): Map<string, Note> {
 }
 
 function Key(props) {
-  const classes =  classNames(
-    props.note,
-    'pianoKey',
-    {
-      'sharp': props.isSharp,
-      'pressed': props.isPressed
-    }
-  );
+
+  const classNamesAp = css(
+    styles.key,
+    props.isSharp && styles.key_sharp,
+    props.isPressed && styles.key_pressed,
+    props.isPressed && props.isSharp && styles.key_sharp_pressed
+  )
+
 
   const handleMouseDown = () => {
     SAMPLER.triggerAttack(props.note); 
@@ -96,7 +96,7 @@ function Key(props) {
 
   return (
     <button
-      className={classes}
+      className={classNamesAp}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
@@ -141,12 +141,75 @@ class Piano extends React.Component{
         </div>
       </div>
 
-      )
+    )
   }
 }
+
+const styles = StyleSheet.create({
+    key: {
+      height: '16em',
+      width: '4em',
+      padding: '0',
+      paddingTop: '150px',
+      borderLeft: '1px solid #bbb',
+      borderBottom: '1px solid #bbb',
+      borderRadius: '0 0 5px 5px',
+      boxShadow: '-1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2)',
+      background: 'linear-gradient(top, #eee 0%, #fff 100%)',
+
+      ':focus': {
+        outline:'0'
+      },
+      ':active': {
+        borderTop: '1px solid #777',
+        borderLeft: '1px solid #999',
+        borderBottom: '1px solid #999',
+        boxShadow: '2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2)',
+        background: 'linear-gradient(top, #fff 0%, #e9e9e9 100%)'
+      }
+    },
+
+    key_sharp: {
+      height: '12em',
+      width: '2em',
+      position: 'absolute',
+      backgroundColor: 'black',
+      color: 'white',
+      paddingTop: '7em',
+      marginLeft: '-1em',
+      fontSize: '0.5rem',
+      border: '1px solid #000',
+      borderRadius: '0 0 3px 3px',
+      boxShadow: '-1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5)',
+      background: 'linear-gradient(45deg, #222 0%, #555 100%)',
+      ':active': {
+        boxShadow: '-1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5)',
+        background: 'linear-gradient(left, #444 0%, #222 100%)'
+      }
+    },
+
+    key_pressed: {
+        backgroundColor: 'yellow'
+    },
+
+    key_sharp_pressed: {
+        background: 'linear-gradient(45deg, yellow 0%, green 100%)'
+    }
+  });
+
+
+
+
 //@TODO: Add tests
 //@TODO: rename styles to use BEM or use a component framework
-//@TODO: add compatable scales
-//@TODO: remap keys to fit scales and chord shapes
+//@TODO: support repeats and part names in chort charts
+//@TODO: remap keys to fit chord shapes
+//@TODO: support more chord inversions
+//@TODO: remap keys to fit scales
+//@TODO: choose scales to use
+//@TODO: keyboard navigation
+//@TODO: add more piano styles
+//@TODO: add more piano styles
+
 
 export { SAMPLER, Piano, PIANO_NOTES, OCTAVE };
