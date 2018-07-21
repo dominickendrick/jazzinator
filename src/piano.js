@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 
-import { BackingControls } from './backing.jsx';
+import { BackingControls } from './backing.js';
 
 type Note = {
     instrument: string,
@@ -110,66 +110,35 @@ class Piano extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      notes: this.props.notes,
-      chords: {},
-      currentChord: "",
-      currentChart: ""
+      notes: this.props.notes
     }
   }
-
-  handleKeyChange = (key, pressed) => {
-    // this.setState( (prevState, props) => {
-    //   const value = props.notes.get(key)
-    //   props.notes.set(key, Object.assign({pressed: pressed},value))
-    //   return {
-    //     notes: props.notes
-    //   }
-    // })
-  }
-
-  handleChordsLoad = (chords) => {
-    this.setState((prevState, props) => {
-      return {chords: Object.assign(chords, prevState.chords)}
-    })
-  }
-
-  handleCurrentChart = (currentChart) => {
-    this.setState({currentChart})
-  }
-
-  handleCurrentChordChange = (currentChord) => {
-    this.setState({currentChord})
+  componentDidMount() {
+    this.keys.scrollLeft = 400;
   }
   
   render() {
     return (
       <div className='pianoContainer' >
-        <BackingControls 
-          handleKeyChange={this.handleKeyChange}
-          handleChordsLoad={this.handleChordsLoad}
-          handleCurrentChordChange={this.handleCurrentChordChange}
-          chords={this.state.chords}
-          currentChord={this.state.currentChord} 
-          handleCurrentChart={this.handleCurrentChart}
-          currentChart={this.state.currentChart}
-        />
-        <ol>
-          {
-            Array.from(this.state.notes).map((keys) => {
-            const key = keys[1]
-            return (
-              <li key={key.noteString} >
-                <Key 
-                  note={key.noteString} 
-                  isSharp={key.sharp} 
-                  isPressed={key.pressed}
-                  handleKeyChange={this.handleKeyChange} 
-                />
-              </li>
-              )
-            })
-          }
-        </ol>
+        <BackingControls />
+        <div className='keys' ref={(keys) => { this.keys = keys; }}>
+          <ol>
+            {
+              Array.from(this.state.notes).map((keys) => {
+              const key = keys[1]
+              return (
+                <li key={key.noteString} >
+                  <Key 
+                    note={key.noteString} 
+                    isSharp={key.sharp} 
+                    isPressed={key.pressed}
+                  />
+                </li>
+                )
+              })
+            }
+          </ol>
+        </div>
       </div>
 
       )
