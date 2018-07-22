@@ -1,4 +1,4 @@
-import { SAMPLER, OCTAVE } from "./Piano.js";
+import { SAMPLER, OCTAVE, highlightKey, unhighlightKey } from "./Piano.js";
 import { Note } from "tonal"
 
 function initMidi(): void {
@@ -56,17 +56,14 @@ function getMIDIMessage(message: MIDIMessageEvent): void {
 function noteOn(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
     SAMPLER.triggerAttack(key)
-    console.log("pressed")
-    const keyElement = document.getElementsByClassName(key)[0]
-    keyElement.classList.add('pressed')
+    highlightKey(key)
 }
 
 // Function to handle noteOff messages (ie. key is released)
 // Think of this like an 'onkeyup' event
 function noteOff(note: string, velocity: string): void {
     const key = getKeyFromMidiId(note)
-    const keyElement = document.getElementsByClassName(key)[0]
-    keyElement.classList.remove('pressed')
+    unhighlightKey(key)
     //SAMPLER.triggerRelease(key)
 }
 
@@ -82,7 +79,6 @@ function getKeyFromId(id: number): string {
 function getKeyFromMidiId(id: number): string {
     switch(true) {
         case (id >= 24 && id <= 108):
-            console.log("in range");
             return getKeyFromId(id)
         break;
         default:

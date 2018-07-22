@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { CHARTS } from '../assets/charts.js';
-import { SAMPLER } from './Piano.js';
+import { SAMPLER, highlightKey, clearKeys } from './Piano.js';
 import { ChordChart } from './ChordChart.js';
 
 import { Note, Interval, Distance, Scale, Chord } from 'tonal';
@@ -46,7 +46,6 @@ function loadChart(chart: string, handleChordsLoad, handleCurrentChordChange, ch
     if(chords && !chords.hasOwnProperty(chart)) {
       const asset_path = '/assets/charts/'
       const path = asset_path + chart
-      console.log(path)
       return fetch(encodeURIComponent(path))
           .then(response => response.json())
           .then(data => {
@@ -73,31 +72,22 @@ function chordSequenceFromChart(chart: json): Chart {
     });
 }
 
-function clearKeys() {
-    Array.from(document.getElementsByClassName('pianoKey'))
-        .forEach((note) => {
-            note.classList.remove('pressed')
-        })
-}
-
 function displayChords(chord: string): () => void {
   return (time) => {
     synth.triggerAttackRelease('C2', '32n', time)
     if (chord !== '') {
-        clearKeys();
-        const chordNotes = Chord.notes(parseChordName(chord))
-        chordNotes.forEach((note) => {
-            let newNote = note
-            if(note.indexOf('b') > -1) {
-                newNote = Note.enharmonic(note)
-            }
-            //set to 4th octave
-            const chordOctave = newNote + '4';
-            SAMPLER.triggerAttackRelease(chordOctave, '1n');
-            const keyElement = document.getElementsByClassName(chordOctave)[0]
-            keyElement.classList.add('pressed')
-        })
-        //document.querySelector('.currentChord').textContent = chord
+      clearKeys();
+      const chordNotes = Chord.notes(parseChordName(chord))
+      chordNotes.forEach((note) => {
+        let newNote = note
+        if(note.includes('b')) {
+            newNote = Note.enharmonic(note)
+        }
+        //set to 3th octave
+        const chordOctave = newNote + '3';
+        SAMPLER.triggerAttackRelease(chordOctave, '1n');
+        highlightKey(chordOctave)
+      })
     }
   }
 }

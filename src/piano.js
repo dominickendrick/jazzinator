@@ -2,7 +2,7 @@
 import Tone from 'tone';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 import { BackingControls } from './BackingControls.js';
 
@@ -45,18 +45,18 @@ function getPianoNotes() {
 
 
 const SAMPLER = new Tone.Sampler({
-     'A4': '/assets/audio/samples/grand_piano/f-a4.wav' ,
-      'A5': '/assets/audio/samples/grand_piano/f-a5.wav' ,
-      'A6': '/assets/audio/samples/grand_piano/f-a6.wav' ,
-      'C4': '/assets/audio/samples/grand_piano/f-c4.wav' ,
-      'C5': '/assets/audio/samples/grand_piano/f-c5.wav' ,
-      'C6': '/assets/audio/samples/grand_piano/f-c6.wav' ,
-      'D#4': '/assets/audio/samples/grand_piano/f-dsharp4.wav' ,
-      'D#5': '/assets/audio/samples/grand_piano/f-dsharp5.wav' ,
-      'D#6': '/assets/audio/samples/grand_piano/f-dsharp6.wav' ,
-      'F#4': '/assets/audio/samples/grand_piano/f-fsharp4.wav' ,
-      'F#5': '/assets/audio/samples/grand_piano/f-fsharp5.wav' ,
-      'F#6': '/assets/audio/samples/grand_piano/f-fsharp6.wav'
+     'A4': '/assets/audio/samples/grand_piano/piano-f-a4.wav' ,
+      'A5': '/assets/audio/samples/grand_piano/piano-f-a5.wav' ,
+      'A6': '/assets/audio/samples/grand_piano/piano-f-a6.wav' ,
+      'C4': '/assets/audio/samples/grand_piano/piano-f-c4.wav' ,
+      'C5': '/assets/audio/samples/grand_piano/piano-f-c5.wav' ,
+      'C6': '/assets/audio/samples/grand_piano/piano-f-c6.wav' ,
+      'D#4': '/assets/audio/samples/grand_piano/piano-f-dsharp4.wav' ,
+      'D#5': '/assets/audio/samples/grand_piano/piano-f-dsharp5.wav' ,
+      'D#6': '/assets/audio/samples/grand_piano/piano-f-dsharp6.wav' ,
+      'F#4': '/assets/audio/samples/grand_piano/piano-f-fsharp4.wav' ,
+      'F#5': '/assets/audio/samples/grand_piano/piano-f-fsharp5.wav' ,
+      'F#6': '/assets/audio/samples/grand_piano/piano-f-fsharp6.wav'
   }
 ).toMaster()
 
@@ -75,30 +75,45 @@ function getNotesForOctave(octave: number): Map<string, Note> {
     return map
 }
 
+function highlightKey(key) {
+  const keyElement = document.getElementById(key)
+  const classname = key.includes('#') ? 'key_pressed_sharp':'key_pressed'
+  keyElement.classList.add(classname)
+}
+
+function unhighlightKey(key) {
+  const keyElement = document.getElementById(key)
+  keyElement.classList.remove('key_pressed')
+  keyElement.classList.remove('key_pressed_sharp')
+}
+
+function clearKeys() {
+    const el = Array.from(document.getElementsByClassName('key_pressed')).concat(Array.from(document.getElementsByClassName('key_pressed_sharp')))
+    el.forEach((note) => {
+      note.classList.remove('key_pressed_sharp')
+      note.classList.remove('key_pressed')
+    })
+}
+
 function Key(props) {
 
-  const classNamesAp = css(
+  const classNames = css(
     styles.key,
     props.isSharp && styles.key_sharp,
     props.isPressed && styles.key_pressed,
-    props.isPressed && props.isSharp && styles.key_sharp_pressed
+    props.isPressed && props.isSharp && styles.key_sharp_pressed,
   )
 
 
   const handleMouseDown = () => {
     SAMPLER.triggerAttack(props.note); 
-    props.handleKeyChange(props.note, true);
-  }
-
-    const handleMouseUp = () => {
-    props.handleKeyChange(props.note, false);
   }
 
   return (
     <button
-      className={classNamesAp}
+      className={classNames}
       onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
+      id={props.note}
     >
       {props.note}
     </button>
@@ -212,4 +227,4 @@ const styles = StyleSheet.create({
 //@TODO: add more piano styles
 
 
-export { SAMPLER, Piano, PIANO_NOTES, OCTAVE };
+export { SAMPLER, Piano, PIANO_NOTES, OCTAVE, highlightKey, unhighlightKey, clearKeys };

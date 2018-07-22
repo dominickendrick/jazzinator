@@ -143,10 +143,6 @@
         width: 400px;
     }
 
-    .chordChart {
-      margin-top:3px;
-    }
-
     .playback {
       width: 322px;
       display: inline-flex;
@@ -169,32 +165,14 @@
 
     .currentChord { font-size: 10px; }
 
-    .chordChart .chordList, .chordChart .chordList ol {
-        margin:0;
-        padding:0;
-        display:inline;
+    li .key_pressed {
+        background: yellow;
     }
 
-    .bar {
-      width: 24%;
-      font-size: 10px;
-      display: block;
-      float: left;
-      padding: 1% 0;
-      margin: 0px 1px;
+    li .key_pressed_sharp {
+        background: linear-gradient(45deg, yellow 0%, green 100%);
     }
 
-    .bar.highlight {
-        color:#343440;
-        background-color:#90c1e0;
-    }
-
-    .bar ol {
-      display:flex;
-    }
-    .chord {
-      padding:0 1px;
-    }
     </style>
 </head>
 
