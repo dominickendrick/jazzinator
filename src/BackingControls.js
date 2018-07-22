@@ -1,16 +1,13 @@
 /* @flow */
-import Tone from 'tone';
 import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { CHARTS } from '../assets/charts.js';
 import { SAMPLER, highlightKey, clearKeys } from './Piano.js';
 import { ChordChart } from './ChordChart.js';
+import { BackingChartSelector } from './BackingChartSelector.js';
 
 import { Note, Interval, Distance, Scale, Chord } from 'tonal';
-
-
-var synth = new Tone.Synth().toMaster()
 
 type Chords = string;
 
@@ -39,25 +36,9 @@ type Chart = {
   ChartData: Array<Bar>
 }
 
-function loadChart(chart: string, handleChordsLoad, handleCurrentChordChange, chords, currentChord, handleCurrentChart): ?Promise<Chart> {
-    //remove loaded chords and reset the transport timeline
-    Tone.Transport.cancel()
-    Tone.Transport.stop()
-    if(chords && !chords.hasOwnProperty(chart)) {
-      const asset_path = '/assets/charts/'
-      const path = asset_path + chart
-      return fetch(encodeURIComponent(path))
-          .then(response => response.json())
-          .then(data => {
-            handleChordsLoad({[chart] : data})
-            handleCurrentChart(chart)
-          })
-    } 
-}
-
-function chordSequenceFromChart(chart: json): Chart {
+function chordSequenceFromChart(chart: json, toneTransport): Chart {
     //clear all previous loaded chords
-    Tone.Transport.cancel()
+    toneTransport.cancel()
     //schedule a set of chords to play from the chord chart
     chart.ChartData.forEach((bar, barNumber) => {
 
@@ -67,14 +48,13 @@ function chordSequenceFromChart(chart: json): Chart {
             //Time is in the format BARS:QUARTERS:SIXTEENTHS.
             const time = `${barNumber}:${beat}:0`
             const playAndDisplay = displayChords(chord)
-            Tone.Transport.schedule(playAndDisplay, time)
+            toneTransport.schedule(playAndDisplay, time)
         })
     });
 }
 
 function displayChords(chord: string): () => void {
   return (time) => {
-    synth.triggerAttackRelease('C2', '32n', time)
     if (chord !== '') {
       clearKeys();
       const chordNotes = Chord.notes(parseChordName(chord))
@@ -97,39 +77,6 @@ function parseChordName(chord: string): string {
 }
 
 
-class PlaybackElapsedTime extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {elapsedSeconds: 0};
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 100);
-  }
-
-  tick() {
-    this.setState({elapsedSeconds: Tone.Transport.seconds.toFixed(1) })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  getTime(seconds) {
-    return new Date(seconds * 1000).toISOString().substr(11, 10);
-  }
-  
-  render() {
-    return (
-      <p className='elapsedSeconds'>
-        <span className='seconds'>{this.getTime(this.state.elapsedSeconds)}</span>
-      </p>
-    )
-  }
-
-}
-
 function PlayPauseButton(props) {
   
   const handlePlayPauseToggle = () => {
@@ -146,7 +93,7 @@ function PlayPauseButton(props) {
   }
 
   const handleStop = (e) => {
-    Tone.Transport.stop()
+    props.toneTransport.stop()
     props.handlePlayPause('list')
   }
 
@@ -167,96 +114,6 @@ function PlayPauseButton(props) {
     </div>
   )
 }
-
-class BpmControl extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { bpm: 120 }
-  }
-  
-  handleSliderUpate = (element) => {
-    const bpm = parseInt(element.target.value)
-    this.setState({ bpm: bpm })
-    Tone.Transport.bpm.value = bpm
-  }
-
-  render() {
-    return (  
-      <div className='bpm'>
-          <input 
-            type='range' 
-            value={this.state.bpm} 
-            min='30' 
-            max='400' 
-            className='bpmSlider' 
-            id='bpmSlider' 
-            onChange={this.handleSliderUpate}
-          />
-          <label 
-            htmlFor='bpmSlider' 
-            className='bpmValue' >
-          {this.state.bpm} 
-          </label>
-      </div>
-    )
-  }
-}
-
-function CurrentChord(props) {
-  return(
-    <p className='currentChord'></p>     
-  )
-}
-
-function ChartList(props) {
-
-  const parseChartName = (name) => {
-    return name.replace(/_/g, ' ').replace(/\.json/, '')
-  }
-
-  const handleChartSelect = (e) => {
-    loadChart(e.target.value, props.handleChordsLoad, props.handleCurrentChordChange, props.chords, props.currentChord, props.handleCurrentChart)
-  }
-  
-  const playbackClasses =  classNames(
-    'tunes',
-     props.playing
-  );
-
-  return (
-    <div className={playbackClasses}>
-      <div className='tunesContainer'>
-        <div className='tunesList'>
-          <select 
-            id="chart-select" 
-            name="chart" 
-            size="10" 
-            onChange={handleChartSelect}
-            onDoubleClick={() => props.handlePlayPause('playing')}
-            >
-              {props.charts.map((chartName) => {
-                return <option key={chartName} value={chartName}>{parseChartName(chartName)}</option>})
-              }
-          </select>
-        </div>
-        <div className='chartPlayback'>
-          <h1>{parseChartName(props.currentChart)}</h1>
-          <PlaybackElapsedTime />
-
-          {props.chords && props.chords[props.currentChart] &&
-            <ChordChart 
-              currentChartJson={props.chords[props.currentChart]} 
-              currentChord={props.currentChord}
-              currentBar={props.currentBar}
-            />
-          }
-        </div>
-      </div>
-    </div>
-  )
-}
-
 
 
 class BackingControls extends React.Component {
@@ -297,18 +154,18 @@ class BackingControls extends React.Component {
         const currentChart = this.state.chords[this.state.currentChart]
         if (currentChart) {
           this.setState({playing: 'playing'})
-          chordSequenceFromChart(currentChart)
+          chordSequenceFromChart(currentChart, this.props.toneTransport)
           this.setCurrentBarNumber(currentChart)
-          Tone.Transport.start()
+          this.props.toneTransport.start()
         }
         break;
       case 'paused': 
         this.setState({playing: 'paused'}) 
-        Tone.Transport.pause()
+        this.props.toneTransport.pause()
         break;
       case'list':
         this.setState({playing: 'list'})
-        Tone.Transport.stop()
+        this.props.toneTransport.stop()
         break;
       default:
         this.setState({playing: 'list'})
@@ -324,17 +181,18 @@ class BackingControls extends React.Component {
           return (time) => { handleCurrentBar(barNumber) } 
         }
         const setCurrentBar = currentBar()
-        Tone.Transport.schedule(setCurrentBar, time);
+        this.props.toneTransport.schedule(setCurrentBar, time);
       })
     }
   }
   
   render() {
+    console.log(this.props.toneTransport)
     return (
       <div className='backingControls'>
         <fieldset>
         <legend>Backing controls</legend>
-          <ChartList
+          <BackingChartSelector
             charts={CHARTS} 
             handleChordsLoad={this.handleChordsLoad}
             handleCurrentChordChange={this.handleCurrentChordChange}
@@ -345,10 +203,12 @@ class BackingControls extends React.Component {
             playing={this.state.playing}
             handlePlayPause={this.handlePlayPause}
             currentBar={this.state.currentBar}
+            toneTransport={this.props.toneTransport}
           />
           <PlayPauseButton 
             playing={this.state.playing}
             handlePlayPause={this.handlePlayPause}
+            toneTransport={this.props.toneTransport}
           />
         </fieldset>
       </div>

@@ -135,7 +135,7 @@ class Piano extends React.Component{
   render() {
     return (
       <div className='pianoContainer' >
-        <BackingControls />
+        <BackingControls toneTransport={Tone.Transport}/>
         <div className='keys' ref={(keys) => { this.keys = keys; }}>
           <ol>
             {
