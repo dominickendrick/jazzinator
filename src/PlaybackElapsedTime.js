@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
+import { StyleSheet, css } from 'aphrodite/no-important'
 
 class PlaybackElapsedTime extends React.Component {
 
@@ -27,12 +28,17 @@ class PlaybackElapsedTime extends React.Component {
   
   render() {
     return (
-      <p className='elapsedSeconds'>
+      <p className={css(styles.elapsedSeconds)} >
         <span className='seconds'>{this.getTime(this.state.elapsedSeconds)}</span>
       </p>
     )
   }
-
 }
 
+const styles = StyleSheet.create({
+    elapsedSeconds: {
+      fontSize: '10px'
+    }
+  }
+)
 export { PlaybackElapsedTime }

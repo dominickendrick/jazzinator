@@ -136,8 +136,8 @@ class Piano extends React.Component{
     return (
       <div className='pianoContainer' >
         <BackingControls toneTransport={Tone.Transport}/>
-        <div className='keys' ref={(keys) => { this.keys = keys; }}>
-          <ol>
+        <div className={css(styles.keys)} ref={(keys) => { this.keys = keys; }}>
+          <ol className={css(styles.keysList)}>
             {
               Array.from(this.state.notes).map((keys) => {
               const key = keys[1]
@@ -161,6 +161,18 @@ class Piano extends React.Component{
 }
 
 const styles = StyleSheet.create({
+    keys: {
+      width: '100%',
+      overflow: 'scroll'
+    },
+
+    keysList: {
+      width: '2240px',
+      position: 'relative',
+      margin: 0,
+      padding:0,
+    },
+
     key: {
       height: '16em',
       width: '4em',

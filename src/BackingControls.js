@@ -2,12 +2,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
+import { StyleSheet, css } from 'aphrodite/no-important'
+import { Note, Interval, Distance, Scale, Chord } from 'tonal';
+
 import { CHARTS } from '../assets/charts.js';
 import { SAMPLER, highlightKey, clearKeys } from './Piano.js';
 import { ChordChart } from './ChordChart.js';
 import { BackingChartSelector } from './BackingChartSelector.js';
-
-import { Note, Interval, Distance, Scale, Chord } from 'tonal';
+import { PlayPauseButton } from './PlayPauseButton.js';
 
 type Chords = string;
 
@@ -75,46 +77,6 @@ function displayChords(chord: string): () => void {
 function parseChordName(chord: string): string {
     return chord.replace(/-/, 'm').replace(/\^/, 'M')
 }
-
-
-function PlayPauseButton(props) {
-  
-  const handlePlayPauseToggle = () => {
-    switch(props.playing) {
-      case 'list': 
-        props.handlePlayPause('playing')
-        break;
-      case 'playing':
-        props.handlePlayPause('paused')
-        break;
-      case 'paused':
-        props.handlePlayPause('playing')
-    }
-  }
-
-  const handleStop = (e) => {
-    props.toneTransport.stop()
-    props.handlePlayPause('list')
-  }
-
-  return (
-    <div className='playback'>
-      <input 
-          type='button' 
-          value='play/pause' 
-          className='playToggle' 
-          onClick={handlePlayPauseToggle}
-      />
-      <input 
-        type='button' 
-        className='stop' 
-        value='Stop' 
-        onClick={handleStop}
-      />          
-    </div>
-  )
-}
-
 
 class BackingControls extends React.Component {
 
@@ -189,9 +151,9 @@ class BackingControls extends React.Component {
   render() {
     console.log(this.props.toneTransport)
     return (
-      <div className='backingControls'>
-        <fieldset>
-        <legend>Backing controls</legend>
+      <div className={css(styles.backingControls)}>
+        <fieldset className={css(styles.fieldset)}>
+        <legend className={css(styles.backingControlsLegend)} >Backing controls</legend>
           <BackingChartSelector
             charts={CHARTS} 
             handleChordsLoad={this.handleChordsLoad}
@@ -216,6 +178,21 @@ class BackingControls extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  backingControlsLegend: {
+    fontFamily: '"Orbitron", sans-serif',
+    fontWeight: 'normal',
+    color: 'white',
+    fontSize: '18px',
+    textTransform: 'uppercase'
+  },
+
+  fieldset: {
+    border: 0,
+    position:'relative',
+    width: '98%'
+  }
+})
 
 
 

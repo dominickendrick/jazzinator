@@ -17,9 +17,6 @@
         width: 100%;
         border: 1px solid rgb(189, 35, 64);
         border-radius: 4px;
-        background: #d17777; /* Old browsers */
-        background: -moz-linear-gradient(top, #d17777 0%, #b22f23 4%, #d83d29 50%, #c93620 51%, #c93a3a 97%, #e07167 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, #d17777 0%,#b22f23 4%,#d83d29 50%,#c93620 51%,#c93a3a 97%,#e07167 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, #d17777 0%,#b22f23 4%,#d83d29 50%,#c93620 51%,#c93a3a 97%,#e07167 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d17777', endColorstr='#e07167',GradientType=0 ); /* IE6-9 */
 
@@ -32,139 +29,11 @@
         src: local('LCDDot Regular'), url('assets/fonts/lcddot.ttf') format('opentype');
     }
 
-    fieldset {
-        border: 0;
-    }
-    .backingControls legend {
-        font-family: 'Orbitron', sans-serif;
-        font-weight: normal;
-        color: white;
-        font-size:18px;
-        text-transform: uppercase;
-    }
-
     .piano .keys {
         width: 100%;
         overflow: scroll;
     }
-
-    .piano .keys ol {
-        width:2240px;
-        position: relative;
-        margin:0;
-        padding:0;
-    }
-
-    .backingControls > fieldset{
-        position:relative;
-        width:98%;
-    }
-
-    .tunes{ 
-        position:relative; 
-        overflow:hidden;
-        width:325px;
-        height: 200px;
-        box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.42) inset;
-        -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.42) inset;
-        -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.42) inset;
-    }
-
-    .tunesContainer {
-        width:650px;
-        height:200px;
-        display: inline-flex;
-    }
-
-    .playing .tunesContainer, .paused .tunesContainer {
-      margin-left:-100%;
-      transition: all 0.5s;  
-    }
-
-    .list .tunesContainer {
-        margin-left:0;
-        transition: all 0.5s; 
-    }
     
-    .tunesList select {
-        font-family: 'LCDDot Regular';
-        color:#90c1e0;
-        background-color:#343440;
-        border:0;
-        width:325px;
-        cursor: pointer;
-        height:200px;
-        box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-        -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-        -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-    }
-
-    .tunesList select:focus {
-        outline: none;
-    }
-
-    .tunesList option {
-        height: 1.3em;
-        padding: 2px 0px 0px 2px;
-        margin: 0px 2px 1px 2px;
-
-    }
-
-    .tunesList option:checked, .tunes select option:active, .tunes select option:hover {
-        color:#343440;
-        background-color:#90c1e0;
-    }
-
-    .chartPlayback {
-        width:317px;
-        font-family: 'LCDDot Regular';
-        color:#90c1e0;
-        background-color:#343440;
-        padding: 1px 4px;
-        height: 200px;
-        transition: all 1s;
-        margin:0;
-        box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-        -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-        -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.20) inset;
-    }
-
-    .chartPlayback p {
-        padding:0;
-        margin:0;
-    }
-
-    .chartPlayback h1 {
-        font-size:20px;
-        font-weight: normal;
-        margin: 6px 0px 4px 0px;
-        overflow: hidden;
-        display: block;
-        width: 400px;
-    }
-
-    .playback {
-      width: 322px;
-      display: inline-flex;
-      justify-content: space-evenly;
-      margin: 10px 0px;
-    }
-
-    .playToggle, .stop {
-        width: 70px;
-        height: 20px;
-        border-radius: 2px;
-        background-color: grey;
-        color:white;
-        margin-right:10px;
-    }
-    
-    .elapsedSeconds {
-        font-size: 10px;
-    }
-
-    .currentChord { font-size: 10px; }
-
     li .key_pressed {
         background: yellow;
     }
