@@ -10,6 +10,7 @@ import { SAMPLER, highlightKey, clearKeys } from './Piano.js';
 import { ChordChart } from './ChordChart.js';
 import { BackingChartSelector } from './BackingChartSelector.js';
 import { PlayPauseButton } from './PlayPauseButton.js';
+import { getRootNotesForInversions, findClosestInversion, chooseInversion } from './inversions.js'
 
 type Chords = string;
 
@@ -39,6 +40,8 @@ type Chart = {
 }
 
 function chordSequenceFromChart(chart: json, toneTransport): Chart {
+
+    let prevChordNotes = [];
     //clear all previous loaded chords
     toneTransport.cancel()
     //schedule a set of chords to play from the chord chart
@@ -46,31 +49,32 @@ function chordSequenceFromChart(chart: json, toneTransport): Chart {
 
         //loop over the chords for each bar
         bar.BarData.forEach((chord, beat) => {
-
+          if (chord !== '') {
+            const chordName = parseChordName(chord)
+            //const chordNotes = Chord.notes(chordName)
+            const chordNotes = chooseInversion(chordName, prevChordNotes)
+            
             //Time is in the format BARS:QUARTERS:SIXTEENTHS.
             const time = `${barNumber}:${beat}:0`
-            const playAndDisplay = displayChords(chord)
+            const playAndDisplay = displayChords(chordNotes, prevChordNotes)
             toneTransport.schedule(playAndDisplay, time)
+            prevChordNotes = chordNotes
+          }
         })
     });
 }
 
-function displayChords(chord: string): () => void {
-  return (time) => {
-    if (chord !== '') {
-      clearKeys();
-      const chordNotes = Chord.notes(parseChordName(chord))
-      chordNotes.forEach((note) => {
-        let newNote = note
-        if(note.includes('b')) {
-            newNote = Note.enharmonic(note)
-        }
-        //set to 3th octave
-        const chordOctave = newNote + '3';
-        SAMPLER.triggerAttackRelease(chordOctave, '1n');
-        highlightKey(chordOctave)
-      })
-    }
+function displayChords(chordNotes: string, prevChord: Array<string>): () => void {
+  return (time) => { 
+    clearKeys();
+    chordNotes.forEach((note) => {
+      const flatNote = (note.includes('b')) ? Note.enharmonic(note) : note
+      //set to 3th octave
+      const chordOctave = flatNote + '3';
+      SAMPLER.triggerAttackRelease(chordOctave, '1n');
+      highlightKey(chordOctave)
+    })
+  
   }
 }
 
@@ -92,14 +96,14 @@ class BackingControls extends React.Component {
     }
   }
 
+  handleCurrentChart = (currentChart) => {
+    this.setState({currentChart})
+  }
+
   handleChordsLoad = (chords) => {
     this.setState((prevState, props) => {
       return {chords: Object.assign(chords, prevState.chords)}
     })
-  }
-
-  handleCurrentChart = (currentChart) => {
-    this.setState({currentChart})
   }
 
   handleCurrentChordChange = (currentChord) => {
@@ -149,7 +153,6 @@ class BackingControls extends React.Component {
   }
   
   render() {
-    console.log(this.props.toneTransport)
     return (
       <div className={css(styles.backingControls)}>
         <fieldset className={css(styles.fieldset)}>
@@ -196,4 +199,4 @@ const styles = StyleSheet.create({
 
 
 
-export { BackingControls }
+export { BackingControls, chooseInversion, getRootNotesForInversions, findClosestInversion };
