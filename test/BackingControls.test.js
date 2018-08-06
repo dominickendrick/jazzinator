@@ -20,19 +20,16 @@ it('should return the normal chord notes if no inversion is present', () => {
     expect(chord).toEqual(['F', 'A', 'Cb', 'Eb'])
 });
 
-it('should find closed inversion index', () => {
+it('should find closest inversion index', () => {
     const roots = ['A', 'C', 'E', 'G']
     const prevChordBassNote = 'A'
     const inversion = findClosestInversion(roots, prevChordBassNote)
     expect(inversion).toEqual(0)
 });
 
-
-// it('should use a default inversion if no previous chord notes are present', () => {
-//     const currentChord = "F^7"
-//     const prevChordNotes = []
-//     chooseInversion(currentChord, prevChordNotes)
-// });
-
-
-
+it('should find closest inversion index again', () => {
+    const roots = ['A', 'B', 'E', 'G']
+    const prevChordBassNote = 'C'
+    const inversion = findClosestInversion(roots, prevChordBassNote)
+    expect(inversion).toEqual(1)
+});

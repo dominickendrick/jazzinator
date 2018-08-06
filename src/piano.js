@@ -228,14 +228,13 @@ const styles = StyleSheet.create({
 
 
 //@TODO: Add tests
-//@TODO: rename styles to use BEM or use a component framework
+//@TODO: Build proper type support into workflow
 //@TODO: support repeats and part names in chort charts
 //@TODO: remap keys to fit chord shapes
-//@TODO: support more chord inversions
+
 //@TODO: remap keys to fit scales
 //@TODO: choose scales to use
 //@TODO: keyboard navigation
-//@TODO: add more piano styles
 //@TODO: add more piano styles
 
 

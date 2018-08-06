@@ -51,12 +51,11 @@ function chordSequenceFromChart(chart: json, toneTransport): Chart {
         bar.BarData.forEach((chord, beat) => {
           if (chord !== '') {
             const chordName = parseChordName(chord)
-            //const chordNotes = Chord.notes(chordName)
             const chordNotes = chooseInversion(chordName, prevChordNotes)
             
             //Time is in the format BARS:QUARTERS:SIXTEENTHS.
             const time = `${barNumber}:${beat}:0`
-            const playAndDisplay = displayChords(chordNotes, prevChordNotes)
+            const playAndDisplay = playChords(chordNotes, prevChordNotes)
             toneTransport.schedule(playAndDisplay, time)
             prevChordNotes = chordNotes
           }
@@ -64,7 +63,7 @@ function chordSequenceFromChart(chart: json, toneTransport): Chart {
     });
 }
 
-function displayChords(chordNotes: string, prevChord: Array<string>): () => void {
+function playChords(chordNotes: string, prevChord: Array<string>): () => void {
   return (time) => { 
     clearKeys();
     chordNotes.forEach((note) => {
