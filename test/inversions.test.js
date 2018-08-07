@@ -1,7 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
-import { chooseInversion, getRootNotesForInversions, findClosestInversion } from '../src/inversions.js'
+import { chooseInversion, getRootNotesForInversions, findClosestInversion, getDistanceFromRoot } from '../src/inversions.js'
 
 jest.mock('tone');
 
@@ -32,4 +29,25 @@ it('should find closest inversion index again', () => {
     const prevChordBassNote = 'C'
     const inversion = findClosestInversion(roots, prevChordBassNote)
     expect(inversion).toEqual(1)
+});
+
+it('should convert inversion intervals list to notes of current key', () => {
+    const inversion = ['C','Eb','Bb']
+    const chordRoot = "C"
+    const notes = getDistanceFromRoot(inversion, chordRoot)
+    expect(notes).toEqual([0, 9, 2])
+});
+
+it('should find the correct closet inversion based on the previous chord', () => {
+    const currentChord = "G7"
+    const previousChordNotes = ["F", "A", "C", "E"] // 3rd inversion of D-7
+    const notes = chooseInversion(currentChord, previousChordNotes)
+    expect(notes).toEqual(["F", "A", "B", "E"]) // 7m 9M 3M 6M
+});
+
+it('should default to 1st inversion if there is no previous chord', () => {
+    const currentChord = "G7"
+    const previousChordNotes = [] // 3rd inversion of D-7
+    const notes = chooseInversion(currentChord, previousChordNotes)
+    expect(notes).toEqual(["F", "A", "B", "E"]) // 7m 9M 3M 6M
 });

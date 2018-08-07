@@ -181,6 +181,11 @@ class BackingControls extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  backingControls: {
+    width: '400px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
   backingControlsLegend: {
     fontFamily: '"Orbitron", sans-serif',
     fontWeight: 'normal',
@@ -198,4 +203,4 @@ const styles = StyleSheet.create({
 
 
 
-export { BackingControls, chooseInversion, getRootNotesForInversions, findClosestInversion };
+export { BackingControls };

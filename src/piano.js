@@ -216,10 +216,17 @@ const styles = StyleSheet.create({
     },
 
     key_pressed: {
+        borderTop: '1px solid #777',
+        borderLeft: '1px solid #999',
+        borderBottom: '1px solid #999',
+        boxShadow: '2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2)',
+        background: 'linear-gradient(top, #fff 0%, #e9e9e9 100%)',
         backgroundColor: 'yellow'
     },
 
     key_sharp_pressed: {
+        boxShadow: '-1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5)',
+        background: 'linear-gradient(left, #444 0%, #222 100%)',
         background: 'linear-gradient(45deg, yellow 0%, green 100%)'
     }
   });
@@ -228,6 +235,7 @@ const styles = StyleSheet.create({
 
 
 //@TODO: Add tests
+//@TODO: Add stricter prop validation
 //@TODO: Build proper type support into workflow
 //@TODO: support repeats and part names in chort charts
 //@TODO: remap keys to fit chord shapes
@@ -236,6 +244,7 @@ const styles = StyleSheet.create({
 //@TODO: choose scales to use
 //@TODO: keyboard navigation
 //@TODO: add more piano styles
+//@TODO: add better samples
 
 
 export { SAMPLER, Piano, PIANO_NOTES, OCTAVE, highlightKey, unhighlightKey, clearKeys };
