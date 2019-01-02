@@ -1,2 +1,2 @@
 # jazzinator
-Browser based jazz piano 
+Browser based jazz piano assistant
